@@ -1,7 +1,6 @@
 <template>
   <v-card
-    class="mx-auto"
-    color="#F9F9F9"
+    class="mx-auto" 
     max-width="400"
   >
     <v-list-item two-line>
@@ -10,6 +9,7 @@
         <v-list-item-subtitle>Mon, 12:30 PM, Mostly sunny</v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
+
 
     <v-card-text>
       <v-row align="center">
@@ -23,6 +23,7 @@
             width="92"
           ></v-img>
         </v-col>
+    <h3> test{{userDetails}}</h3>
       </v-row>
     </v-card-text>
 
@@ -75,16 +76,22 @@
 
 <script>
   export default {
-    data () {
-      return {
-        labels: ['SU', 'MO', 'TU', 'WED', 'TH', 'FR', 'SA'],
+    data: () => ({
+      labels: ['SU', 'MO', 'TU', 'WED', 'TH', 'FR', 'SA'],
         time: 0,
         forecast: [
           { day: 'Tuesday', icon: 'mdi-white-balance-sunny', temp: '24\xB0/12\xB0' },
           { day: 'Wednesday', icon: 'mdi-white-balance-sunny', temp: '22\xB0/14\xB0' },
           { day: 'Thursday', icon: 'mdi-cloud', temp: '25\xB0/15\xB0' },
         ],
-      }
-    },
+    userDetails:null,
+    }),
+
+    created: function () {
+      axios.get('/api/user').then(response => (
+        this.userDetails = response.data
+        // console.log(response.data)
+      ))
+    }
   }
 </script>

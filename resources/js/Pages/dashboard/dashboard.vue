@@ -61,3 +61,9 @@
     },
   }
 </script>
+
+<style scoped>
+a:hover {
+  text-decoration: none ! important;
+}
+</style>
